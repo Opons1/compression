@@ -15,8 +15,8 @@ compression.compressed_nodes = {
 	"wool:white",
 }
 
-local moreblocks_available = minetest.get_modpath("moreblocks")
-local max_compression_level = tonumber(minetest.settings:get("max_compression_level") or 10)
+local moreblocks_available = core.get_modpath("moreblocks")
+local max_compression_level = tonumber(core.settings:get("max_compression_level") or 10)
 local maxlvl = tonumber(core.settings:get("max_compression_level") or 10)
 
 compression.register_compressed_nodes(compression.compressed_nodes, maxlvl)
@@ -36,13 +36,13 @@ if moreblocks_available then
         moreblocks_stone_output, moreblocks_desert_stone_output = "default:stone 9", "default:desert_stone 9"
     end
 
-	minetest.register_craft({
+	core.register_craft({
         type = "cooking",
         recipe = "moreblocks:cobble_compressed",
         output = moreblocks_stone_output,
         cooktime = 9,
     })
-	minetest.register_craft({
+	core.register_craft({
         type = "cooking",
         recipe = "moreblocks:desert_cobble_compressed",
         output = moreblocks_desert_stone_output,
@@ -59,20 +59,20 @@ else
 end
 
 for level = 1, max_compression_level, 1 do
-    minetest.register_craft({
+    core.register_craft({
         type = "cooking",
         recipe = "compression:" .. mod .. "_cobble_compressed_level_" .. level,
         output = "compression:default_stone_compressed_level_" .. level,
         cooktime = 3 ^ level,
     })
-    minetest.register_craft({
+    core.register_craft({
         type = "cooking",
         recipe = "compression:" .. mod .. "_desert_cobble_compressed_level_" .. level,
         output = "compression:default_desert_stone_compressed_level_" .. level,
         cooktime = 3 ^ level,
     })
     if level < 8 then
-        minetest.register_craft({
+        core.register_craft({
             type = "fuel",
             recipe = "compression:default_coalblock_compressed_level_" .. level,
             burntime = 370 * (9 ^ level),
