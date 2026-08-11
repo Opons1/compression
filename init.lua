@@ -81,7 +81,9 @@ compression.compressed_nodes = {
     "birthstonessapphireblock",
     "birthstones:topazblock",
     "birthstones:zirconblock",
-    "opw_events:block_motillusion"
+    "opw_events:block_motillusion",
+	"underworlds:hot_brass",
+	"underworlds:hot_iron",
 }
 
 local moreblocks_available = core.get_modpath("moreblocks")
